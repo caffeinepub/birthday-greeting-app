@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Birthday greeting app where users create personalized birthday wishes via shareable links. Sender inputs recipient name and custom message, generates a unique link. When opened, recipient sees a cake with candles and 'Blow the candles!' prompt. On blowing (interaction), displays happy birthday message with sender's custom text.",
+  "architectural_notes": [
+    "Link generation system to create unique URLs for each birthday greeting",
+    "Data storage to persist sender name, recipient name, and custom message per link",
+    "Candle blowing detection via microphone API or fallback to click/tap interaction"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-sender-form-page-where-users-can-input-the-recipient-s-name-and-a-custom-birthday-message",
+      "title": "Create a sender form page where users can input the recipient's name and a custom birthday message",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-a-unique-shareable-link-for-each-birthday-greeting-that-encodes-the-recipient-name-and-custom-message",
+      "title": "Generate a unique shareable link for each birthday greeting that encodes the recipient name and custom message",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-recipient-view-page-that-displays-a-birthday-cake-with-lit-candles-centered-on-the-cake-when-the-shareable-link-is-opened",
+      "title": "Create a recipient view page that displays a birthday cake with lit candles centered on the cake when the shareable link is opened",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-the-prompt-blow-the-candles-on-the-recipient-view-before-interaction",
+      "title": "Display the prompt 'Blow the candles!' on the recipient view before interaction",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-candle-blowing-interaction-using-microphone-input-to-detect-blowing-sound",
+      "title": "Implement candle-blowing interaction using microphone input to detect blowing sound",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-happy-birthday-message-with-the-recipient-s-name-and-sender-s-custom-message-after-candles-are-blown-out",
+      "title": "Display happy birthday message with the recipient's name and sender's custom message after candles are blown out",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-festive-and-celebratory-visual-theme-with-warm-cheerful-colors-avoid-blue-and-purple-playful-typography-and-birthday-party-aesthetics-including-balloons-confetti-or-celebratory-elements",
+      "title": "Design a festive and celebratory visual theme with warm, cheerful colors (avoid blue and purple), playful typography, and birthday party aesthetics including balloons, confetti, or celebratory elements",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-candle-rendering-in-the-birthdaycake-component-to-dynamically-style-candle-colors-and-appearance-to-harmonize-with-the-overall-cake-decoration-theme-ensuring-visual-cohesion-between-the-candles-and-the-cake-design",
+      "title": "Update the candle rendering in the BirthdayCake component to dynamically style candle colors and appearance to harmonize with the overall cake decoration theme, ensuring visual cohesion between the candles and the cake design",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create sender input form for recipient name and birthday message",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Generate unique shareable link for each birthday greeting",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Display birthday cake with lit candles centered on cake when link is opened",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Show 'Blow the candles!' prompt on recipient view",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Implement candle blowing interaction (microphone or click-based)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Display happy birthday message with sender's custom text after candle blow",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Store birthday greeting data (recipient name and message) in the backend associated with the unique link identifier",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Match candle styles and colors to match the overall cake decoration theme",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Birthday Greeting App",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

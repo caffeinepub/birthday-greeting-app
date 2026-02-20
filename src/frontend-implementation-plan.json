@@ -1,0 +1,29 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Match candle colors to cake decoration theme",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "summary": "Update candle rendering to dynamically style colors and appearance to harmonize with the cake decoration theme",
+      "acceptanceCriteria": [
+        "Candle colors complement the cake's color scheme",
+        "Candle styling (shape, size, decorative elements) matches the cake's decorative theme",
+        "Visual consistency is maintained between lit and extinguished candle states",
+        "The flame colors harmonize with the candle and cake color palette"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BirthdayCake.tsx",
+          "operation": "modify",
+          "description": "Update the candle rendering logic to apply dynamic styling that harmonizes with the cake decoration theme. Extract color values from the theme (using CSS variables or the existing festive palette from index.css) and apply them to candle elements. Ensure candle colors (body, wick, decorative elements) complement the cake's color scheme. Maintain visual consistency between lit and extinguished states by coordinating the candle styling with the existing flame animation. Apply harmonized colors to the flame gradient to match both the candle and cake palette. Preserve the existing candle blowing interaction functionality and lit/extinguished state toggle behavior as required by constraints."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add custom CSS variables or utility classes for candle-specific theming that derive from or complement the existing festive color palette. Define candle color schemes that harmonize with the cake decoration colors, including variants for lit and extinguished states. Ensure flame colors coordinate with the overall theme. These variables should be used by the BirthdayCake component to achieve visual cohesion between candles and cake design."
+        }
+      ]
+    }
+  ]
+}

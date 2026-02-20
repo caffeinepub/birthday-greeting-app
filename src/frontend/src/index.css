@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1rem;
+        
+        /* Festive warm color palette */
+        --background: 0.98 0.02 45;
+        --foreground: 0.25 0.08 25;
+        
+        --card: 1 0.03 50;
+        --card-foreground: 0.25 0.08 25;
+        
+        --popover: 1 0.03 50;
+        --popover-foreground: 0.25 0.08 25;
+        
+        --primary: 0.65 0.22 35;
+        --primary-foreground: 1 0.02 45;
+        
+        --secondary: 0.75 0.18 65;
+        --secondary-foreground: 0.25 0.08 25;
+        
+        --muted: 0.92 0.03 45;
+        --muted-foreground: 0.55 0.05 35;
+        
+        --accent: 0.70 0.25 15;
+        --accent-foreground: 1 0.02 45;
+        
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        
+        --border: 0.88 0.05 45;
+        --input: 0.88 0.05 45;
+        --ring: 0.65 0.22 35;
+        
+        /* Party-specific colors */
+        --party-primary: 0.60 0.24 30;
+        --party-secondary: 0.72 0.20 55;
+        --party-accent: 0.68 0.26 10;
+        --party-muted: 0.60 0.08 35;
+        --party-border: 0.85 0.08 40;
+        --party-card: 0.99 0.03 48;
+        
+        /* Gradient backgrounds */
+        --party-bg-start: 0.97 0.05 50;
+        --party-bg-mid: 0.95 0.08 40;
+        --party-bg-end: 0.93 0.10 30;
+        
+        /* Flame colors */
+        --party-flame-base: 0.65 0.25 35;
+        --party-flame-mid: 0.75 0.22 50;
+        --party-flame-tip: 0.85 0.15 70;
+        
+        /* Candle colors - harmonized with cake decoration */
+        --candle-body: 0.68 0.24 25;
+        --candle-body-shadow: 0.58 0.26 20;
+        --candle-wick: 0.35 0.05 30;
+        --candle-wax-drip: 0.72 0.22 30;
+        --candle-highlight: 0.78 0.18 40;
+        --candle-extinguished: 0.50 0.10 30;
+    }
+
+    .dark {
+        --background: 0.20 0.05 30;
+        --foreground: 0.98 0.02 45;
+        
+        --card: 0.25 0.06 30;
+        --card-foreground: 0.98 0.02 45;
+        
+        --popover: 0.25 0.06 30;
+        --popover-foreground: 0.98 0.02 45;
+        
+        --primary: 0.75 0.20 45;
+        --primary-foreground: 0.20 0.05 30;
+        
+        --secondary: 0.65 0.18 55;
+        --secondary-foreground: 0.98 0.02 45;
+        
+        --muted: 0.35 0.05 35;
+        --muted-foreground: 0.70 0.08 40;
+        
+        --accent: 0.70 0.22 20;
+        --accent-foreground: 0.98 0.02 45;
+        
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.98 0.02 45;
+        
+        --border: 0.35 0.06 35;
+        --input: 0.35 0.06 35;
+        --ring: 0.70 0.18 45;
+        
+        --party-primary: 0.78 0.22 40;
+        --party-secondary: 0.70 0.20 60;
+        --party-accent: 0.72 0.24 15;
+        --party-muted: 0.55 0.08 40;
+        --party-border: 0.40 0.08 35;
+        --party-card: 0.28 0.06 32;
+        
+        --party-bg-start: 0.22 0.06 32;
+        --party-bg-mid: 0.25 0.08 35;
+        --party-bg-end: 0.28 0.10 38;
+        
+        --party-flame-base: 0.70 0.25 35;
+        --party-flame-mid: 0.80 0.22 50;
+        --party-flame-tip: 0.90 0.15 70;
+        
+        --candle-body: 0.72 0.22 30;
+        --candle-body-shadow: 0.62 0.24 25;
+        --candle-wick: 0.40 0.05 35;
+        --candle-wax-drip: 0.76 0.20 35;
+        --candle-highlight: 0.82 0.16 45;
+        --candle-extinguished: 0.55 0.10 35;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .font-display {
+        font-family: 'Fredoka', cursive;
+    }
+}
+
+@layer utilities {
+    .text-party-primary {
+        color: oklch(var(--party-primary));
+    }
+    
+    .text-party-secondary {
+        color: oklch(var(--party-secondary));
+    }
+    
+    .text-party-accent {
+        color: oklch(var(--party-accent));
+    }
+    
+    .text-party-muted {
+        color: oklch(var(--party-muted));
+    }
+    
+    .bg-party-primary {
+        background-color: oklch(var(--party-primary));
+    }
+    
+    .bg-party-secondary {
+        background-color: oklch(var(--party-secondary));
+    }
+    
+    .bg-party-accent {
+        background-color: oklch(var(--party-accent));
+    }
+    
+    .bg-party-card {
+        background-color: oklch(var(--party-card));
+    }
+    
+    .bg-party-bg-start {
+        background-color: oklch(var(--party-bg-start));
+    }
+    
+    .bg-party-bg-mid {
+        background-color: oklch(var(--party-bg-mid));
+    }
+    
+    .bg-party-bg-end {
+        background-color: oklch(var(--party-bg-end));
+    }
+    
+    .border-party-border {
+        border-color: oklch(var(--party-border));
+    }
+    
+    .border-party-primary {
+        border-color: oklch(var(--party-primary));
+    }
+    
+    .bg-party-flame-base {
+        background-color: oklch(var(--party-flame-base));
+    }
+    
+    .bg-party-flame-mid {
+        background-color: oklch(var(--party-flame-mid));
+    }
+    
+    .bg-party-flame-tip {
+        background-color: oklch(var(--party-flame-tip));
+    }
+    
+    .bg-candle-body {
+        background-color: oklch(var(--candle-body));
+    }
+    
+    .bg-candle-body-shadow {
+        background-color: oklch(var(--candle-body-shadow));
+    }
+    
+    .bg-candle-wick {
+        background-color: oklch(var(--candle-wick));
+    }
+    
+    .bg-candle-wax-drip {
+        background-color: oklch(var(--candle-wax-drip));
+    }
+    
+    .bg-candle-highlight {
+        background-color: oklch(var(--candle-highlight));
+    }
+    
+    .bg-candle-extinguished {
+        background-color: oklch(var(--candle-extinguished));
+    }
+    
+    @keyframes flame {
+        0%, 100% {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.1) translateY(-2px);
+            opacity: 0.9;
+        }
+    }
+    
+    @keyframes confetti-fall {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes bounce-slow {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    
+    @keyframes pulse-slow {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.8;
+        }
+    }
+    
+    @keyframes spin-slow {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    
+    .animate-flame {
+        animation: flame 0.3s ease-in-out infinite;
+    }
+    
+    .animate-confetti-fall {
+        animation: confetti-fall linear infinite;
+    }
+    
+    .animate-bounce-slow {
+        animation: bounce-slow 2s ease-in-out infinite;
+    }
+    
+    .animate-pulse-slow {
+        animation: pulse-slow 3s ease-in-out infinite;
+    }
+    
+    .animate-spin-slow {
+        animation: spin-slow 3s linear infinite;
+    }
+    
+    .flame-flicker {
+        animation: flame 0.15s ease-in-out infinite;
+    }
+}

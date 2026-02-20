@@ -1,0 +1,41 @@
+{
+  "kind": "build_request",
+  "title": "Match candle colors to cake decoration theme",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Update the candle rendering in the BirthdayCake component to dynamically style candle colors and appearance to harmonize with the overall cake decoration theme, ensuring visual cohesion between the candles and the cake design",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-final"
+        ],
+        "quotes": [
+          "Match the styles or colour of the candle accordingly to the overall decoration of the cake"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Candle colors complement the cake's color scheme",
+        "Candle styling (shape, size, decorative elements) matches the cake's decorative theme",
+        "Visual consistency is maintained between lit and extinguished candle states",
+        "The flame colors harmonize with the candle and cake color palette"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify the existing cake image asset",
+    "Preserve the candle blowing interaction functionality",
+    "Maintain the lit/extinguished state toggle behavior"
+  ],
+  "nonGoals": [
+    "Changing the number of candles",
+    "Modifying the cake design itself",
+    "Altering the blow detection logic",
+    "Changing the overall page layout or structure"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

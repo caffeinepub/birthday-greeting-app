@@ -2,11 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-candle-rendering-in-the-birthdaycake-component-to-dynamically-style-candle-colors-and-appearance-to-harmonize-with-the-overall-cake-decoration-theme-ensuring-visual-cohesion-between-the-candles-and-the-cake-design",
-      "featureTitle": "Update the candle rendering in the BirthdayCake component to dynamically style candle colors and appearance to harmonize with the overall cake decoration theme, ensuring visual cohesion between the candles and the cake design",
+      "featureId": "feature-create-a-sender-form-page-where-users-can-input-the-recipient-s-name-and-a-custom-birthday-message",
+      "featureTitle": "Create a sender form page where users can input the recipient's name and a custom birthday message",
       "files": [
-        "frontend/src/components/BirthdayCake.tsx",
-        "frontend/src/index.css"
+        "frontend/src/App.tsx",
+        "frontend/src/pages/SenderForm.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,7 +16,124 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-9"
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-generate-a-unique-shareable-link-for-each-birthday-greeting-that-encodes-the-recipient-name-and-custom-message",
+      "featureTitle": "Generate a unique shareable link for each birthday greeting that encodes the recipient name and custom message",
+      "files": [
+        "frontend/src/components/LinkDisplay.tsx",
+        "frontend/src/pages/SenderForm.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-recipient-view-page-that-displays-a-birthday-cake-with-lit-candles-centered-on-the-cake-when-the-shareable-link-is-opened",
+      "featureTitle": "Create a recipient view page that displays a birthday cake with lit candles centered on the cake when the shareable link is opened",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/BirthdayCake.tsx",
+        "frontend/src/pages/RecipientView.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-the-prompt-blow-the-candles-on-the-recipient-view-before-interaction",
+      "featureTitle": "Display the prompt 'Blow the candles!' on the recipient view before interaction",
+      "files": [
+        "frontend/src/pages/RecipientView.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-candle-blowing-interaction-using-microphone-input-to-detect-blowing-sound",
+      "featureTitle": "Implement candle-blowing interaction using microphone input to detect blowing sound",
+      "files": [
+        "frontend/src/hooks/useBlowDetection.ts",
+        "frontend/src/pages/RecipientView.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-happy-birthday-message-with-the-recipient-s-name-and-sender-s-custom-message-after-candles-are-blown-out",
+      "featureTitle": "Display happy birthday message with the recipient's name and sender's custom message after candles are blown out",
+      "files": [
+        "frontend/src/components/BirthdayMessage.tsx",
+        "frontend/src/pages/RecipientView.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-a-festive-and-celebratory-visual-theme-with-warm-cheerful-colors-avoid-blue-and-purple-playful-typography-and-birthday-party-aesthetics-including-balloons-confetti-or-celebratory-elements",
+      "featureTitle": "Design a festive and celebratory visual theme with warm, cheerful colors (avoid blue and purple), playful typography, and birthday party aesthetics including balloons, confetti, or celebratory elements",
+      "files": [
+        "frontend/src/components/ConfettiAnimation.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/RecipientView.tsx",
+        "frontend/src/pages/SenderForm.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
       ],
       "confidence": "high"
     }

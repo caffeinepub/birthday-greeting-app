@@ -1,15 +1,48 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-20T16:18:26.191Z",
-  "summary": "The implementation successfully addresses REQ-9 by adding dynamic candle styling that harmonizes with the cake decoration theme. Candle colors are implemented via CSS custom properties with themed gradients, decorative stripes, wax drip effects, and coordinated flame colors. Both lit and extinguished states maintain visual consistency. All acceptance criteria appear to be met.",
+  "generatedAt": "2026-02-20T16:10:56.391Z",
+  "summary": "The implementation includes all core features: sender form, unique link generation with UUID, backend storage with persistence, recipient view with centered candles, 'Blow the candles!' prompt, microphone-based blow detection, birthday message display, and festive warm color theme with confetti animations. All requirements appear to be implemented based on the diff evidence.",
   "missing_requirements": [],
-  "hallucinated_features": [],
-  "confidence": 0.95,
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication system with login/logout functionality",
+      "reason": "BuildRequest explicitly lists 'User authentication or login system' as a non-goal, but the implementation includes useInternetIdentity hook, InternetIdentityProvider, AuthClient integration, and authentication context throughout the application",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/main.tsx"
+      ]
+    },
+    {
+      "description": "List all greetings endpoint in backend",
+      "reason": "Backend includes a listAllGreetings query function that was not requested in any requirement. The BuildRequest only requires creating and retrieving individual greetings",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "confidence": 0.92,
   "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
     "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
     "frontend/src/components/BirthdayCake.tsx",
+    "frontend/src/components/BirthdayMessage.tsx",
+    "frontend/src/components/ConfettiAnimation.tsx",
+    "frontend/src/components/LinkDisplay.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useBlowDetection.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
     "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/RecipientView.tsx",
+    "frontend/src/pages/SenderForm.tsx",
+    "frontend/tailwind.config.js",
     "project_state.json"
   ]
 }

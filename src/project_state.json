@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
+  "projectStateVersion": 3,
   "summary": "Birthday greeting app where users create personalized birthday wishes via shareable links. Sender inputs recipient name and custom message, generates a unique link. When opened, recipient sees a cake with candles and 'Blow the candles!' prompt. On blowing (interaction), displays happy birthday message with sender's custom text.",
   "architectural_notes": [
     "Link generation system to create unique URLs for each birthday greeting",
@@ -9,6 +9,7 @@
   ],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Birthday cake illustration with space for centered candles, festive frosting and decorations, top-down or slight angle view (birthday-cake.dim_800x600.png)\n- Lit candle with animated flame, single candle suitable for placement on cake (candle-lit.dim_64x128.png)\n- Extinguished candle with smoke trail effect (candle-out.dim_64x128.png)\n- Confetti or celebration particle elements for background animation (confetti.dim_512x512.png)",
   "existing_features": [
     {
       "id": "feature-create-a-sender-form-page-where-users-can-input-the-recipient-s-name-and-a-custom-birthday-message",
@@ -65,14 +66,6 @@
         "REQ-8"
       ],
       "version": 1
-    },
-    {
-      "id": "feature-update-the-candle-rendering-in-the-birthdaycake-component-to-dynamically-style-candle-colors-and-appearance-to-harmonize-with-the-overall-cake-decoration-theme-ensuring-visual-cohesion-between-the-candles-and-the-cake-design",
-      "title": "Update the candle rendering in the BirthdayCake component to dynamically style candle colors and appearance to harmonize with the overall cake decoration theme, ensuring visual cohesion between the candles and the cake design",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -118,12 +111,6 @@
       "reqIds": [
         "REQ-3"
       ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-10",
-      "summary": "Match candle styles and colors to match the overall cake decoration theme",
-      "reqIds": [],
       "status": "pending"
     }
   ],

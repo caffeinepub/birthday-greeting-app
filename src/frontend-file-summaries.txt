@@ -4,10 +4,10 @@
   "frontend/src/hooks/useBlowDetection.ts": "Custom hook using Web Audio API to detect blowing sounds through microphone, analyzes frequency data to trigger candle extinguishing when blow is detected.",
   "frontend/src/pages/SenderForm.tsx": "Sender form page where users input recipient name and birthday message, generates unique link using crypto.randomUUID, displays LinkDisplay component after successful creation.",
   "frontend/src/pages/RecipientView.tsx": "Recipient view page that fetches greeting data, displays birthday cake with candles, manages blow detection state, and transitions to birthday message after candles are blown.",
-  "frontend/src/components/BirthdayCake.tsx": "Birthday cake component displaying cake image with three styled candles featuring festive color gradients, decorative stripes, wax drip effects, and animated flames that harmonize with the overall cake decoration theme, with smooth transitions between lit and extinguished states.",
+  "frontend/src/components/BirthdayCake.tsx": "Birthday cake component displaying cake image with three centered candles, toggles between lit and extinguished candle images with animated flame effects.",
   "frontend/src/components/BirthdayMessage.tsx": "Birthday message display component showing personalized greeting with recipient name and sender's message, includes confetti animation and celebratory styling.",
   "frontend/src/components/LinkDisplay.tsx": "Component displaying generated shareable link with copy-to-clipboard functionality, instructions for sharing, and option to create another greeting.",
   "frontend/src/components/ConfettiAnimation.tsx": "Animated confetti component generating 50 falling confetti particles with randomized positions, delays, and durations for celebratory effect.",
-  "frontend/src/index.css": "Global styles with festive warm OKLCH color palette including new candle-specific color variables (body, shadow, wick, wax-drip, highlight, extinguished) that harmonize with the cake decoration theme, custom fonts, and party animations.",
+  "frontend/src/index.css": "Global styles with festive warm color palette (oranges, yellows, reds) using OKLCH color system, custom Fredoka and Poppins fonts, flame and confetti animations, party-themed design tokens.",
   "frontend/tailwind.config.js": "Tailwind configuration extended with Fredoka display font and Poppins sans-serif font families for festive typography."
 }

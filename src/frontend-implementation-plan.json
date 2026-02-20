@@ -1,27 +1,175 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Match candle colors to cake decoration theme",
+  "title": "Build birthday wish sharing app with candle-blowing interaction",
   "requirements": [
     {
-      "id": "REQ-9",
-      "summary": "Update candle rendering to dynamically style colors and appearance to harmonize with the cake decoration theme",
+      "id": "REQ-1",
+      "summary": "Create a sender form page where users can input the recipient's name and a custom birthday message",
       "acceptanceCriteria": [
-        "Candle colors complement the cake's color scheme",
-        "Candle styling (shape, size, decorative elements) matches the cake's decorative theme",
-        "Visual consistency is maintained between lit and extinguished candle states",
-        "The flame colors harmonize with the candle and cake color palette"
+        "Form includes an input field for recipient name",
+        "Form includes a textarea for custom birthday message",
+        "Form has a submit button to generate the shareable link"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/BirthdayCake.tsx",
-          "operation": "modify",
-          "description": "Update the candle rendering logic to apply dynamic styling that harmonizes with the cake decoration theme. Extract color values from the theme (using CSS variables or the existing festive palette from index.css) and apply them to candle elements. Ensure candle colors (body, wick, decorative elements) complement the cake's color scheme. Maintain visual consistency between lit and extinguished states by coordinating the candle styling with the existing flame animation. Apply harmonized colors to the flame gradient to match both the candle and cake palette. Preserve the existing candle blowing interaction functionality and lit/extinguished state toggle behavior as required by constraints."
+          "path": "frontend/src/pages/SenderForm.tsx",
+          "operation": "create",
+          "description": "Create sender form page component with input field for recipient name, textarea for custom birthday message, and submit button. Style with festive theme using warm colors. Handle form submission by generating unique link ID and calling backend createGreeting method."
         },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for sender form page at root path '/'. Ensure SenderForm component is accessible as the main entry point of the application."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Generate a unique shareable link for each birthday greeting that encodes the recipient name and custom message",
+      "acceptanceCriteria": [
+        "Each submission creates a unique link identifier",
+        "Link encodes or stores the recipient name and message",
+        "Generated link is displayed to the sender for copying and sharing"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/SenderForm.tsx",
+          "operation": "modify",
+          "description": "Add logic to generate unique link identifier (e.g., using crypto.randomUUID or timestamp-based ID). After successful backend storage via createGreeting, display the generated shareable link (e.g., /greeting/{linkId}) to the sender with a copy button."
+        },
+        {
+          "path": "frontend/src/components/LinkDisplay.tsx",
+          "operation": "create",
+          "description": "Create a component to display the generated shareable link with a copy-to-clipboard button. Show success feedback when link is copied. Style with festive theme."
+        },
+        {
+          "path": "frontend/src/pages/SenderForm.tsx",
+          "operation": "modify",
+          "description": "Integrate LinkDisplay component into SenderForm after successful greeting creation to show the shareable link to the sender."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create a recipient view page that displays a birthday cake with lit candles centered on the cake when the shareable link is opened",
+      "acceptanceCriteria": [
+        "Recipient view loads when visiting the unique link",
+        "Birthday cake is displayed prominently",
+        "Candles are visually positioned in the center/middle of the cake",
+        "Candles have a burning/animated flame effect"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/RecipientView.tsx",
+          "operation": "create",
+          "description": "Create recipient view page component that retrieves linkId from URL params, fetches greeting data using backend getGreeting method, and displays birthday cake with lit candles. Use generated image frontend/public/assets/generated/birthday-cake.dim_800x600.png as the cake background. Position lit candles (using frontend/public/assets/generated/candle-lit.dim_64x128.png) in the center of the cake using absolute positioning. Implement CSS animation for flame flickering effect. Style with festive theme."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for recipient view page at path '/greeting/:linkId'. Ensure RecipientView component loads when users visit the unique shareable link."
+        },
+        {
+          "path": "frontend/src/components/BirthdayCake.tsx",
+          "operation": "create",
+          "description": "Create birthday cake component that renders the cake image (frontend/public/assets/generated/birthday-cake.dim_800x600.png) with candles positioned in the center. Accept props for candle state (lit/extinguished) and render either frontend/public/assets/generated/candle-lit.dim_64x128.png or frontend/public/assets/generated/candle-out.dim_64x128.png accordingly. Include flame animation CSS for lit candles."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Display the prompt 'Blow the candles!' on the recipient view before interaction",
+      "acceptanceCriteria": [
+        "Text 'Blow the candles!' is clearly visible on initial page load",
+        "Prompt is positioned near or above the cake"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/RecipientView.tsx",
+          "operation": "modify",
+          "description": "Add text prompt 'Blow the candles!' positioned above or near the birthday cake. Display this prompt initially before the blowing interaction is triggered. Use playful typography consistent with festive theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement candle-blowing interaction using microphone input to detect blowing sound",
+      "acceptanceCriteria": [
+        "Browser requests microphone permission",
+        "Audio input is analyzed to detect blowing sound pattern",
+        "Candles extinguish when blowing is detected",
+        "Interaction triggers the birthday message reveal"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useBlowDetection.ts",
+          "operation": "create",
+          "description": "Create custom hook to request microphone permission using navigator.mediaDevices.getUserMedia, analyze audio input using Web Audio API (AnalyserNode), and detect blowing sound pattern based on amplitude and frequency characteristics. Return blow detection state and functions to start/stop detection."
+        },
+        {
+          "path": "frontend/src/pages/RecipientView.tsx",
+          "operation": "modify",
+          "description": "Integrate useBlowDetection hook into RecipientView. Request microphone permission on page load. When blow is detected, change candle state from lit to extinguished (update BirthdayCake component to show frontend/public/assets/generated/candle-out.dim_64x128.png), hide 'Blow the candles!' prompt, and reveal the birthday message component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Display happy birthday message with the recipient's name and sender's custom message after candles are blown out",
+      "acceptanceCriteria": [
+        "Birthday message includes 'Happy Birthday' greeting",
+        "Recipient's name is displayed in the message",
+        "Sender's custom message is shown",
+        "Message appears after successful candle-blowing interaction"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BirthdayMessage.tsx",
+          "operation": "create",
+          "description": "Create birthday message component that displays 'Happy Birthday' greeting with recipient's name and sender's custom message. Style with festive theme using playful typography and warm colors. Include confetti animation using frontend/public/assets/generated/confetti.dim_512x512.png as particle elements."
+        },
+        {
+          "path": "frontend/src/pages/RecipientView.tsx",
+          "operation": "modify",
+          "description": "Conditionally render BirthdayMessage component after candles are blown out. Pass recipient name and custom message retrieved from backend greeting data as props to BirthdayMessage."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Design a festive and celebratory visual theme with warm, cheerful colors, playful typography, and birthday party aesthetics",
+      "acceptanceCriteria": [
+        "Color palette evokes celebration and joy",
+        "Typography is friendly and appropriate for birthday context",
+        "Visual elements enhance the party atmosphere",
+        "Design is consistent across sender and recipient views"
+      ],
+      "file_operations": [
         {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Add custom CSS variables or utility classes for candle-specific theming that derive from or complement the existing festive color palette. Define candle color schemes that harmonize with the cake decoration colors, including variants for lit and extinguished states. Ensure flame colors coordinate with the overall theme. These variables should be used by the BirthdayCake component to achieve visual cohesion between candles and cake design."
+          "description": "Define festive color palette with warm, cheerful colors (yellows, oranges, pinks, reds) avoiding blue and purple. Import and configure playful, friendly fonts suitable for birthday context. Add global styles for party aesthetics including subtle background patterns or gradients."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration with custom festive color palette (primary, secondary, accent colors in warm tones), custom font families for playful typography, and any additional theme values needed for consistent birthday party aesthetics across all components."
+        },
+        {
+          "path": "frontend/src/components/ConfettiAnimation.tsx",
+          "operation": "create",
+          "description": "Create confetti animation component using frontend/public/assets/generated/confetti.dim_512x512.png as particle sprites. Implement CSS or canvas-based animation for falling confetti effect to enhance celebratory atmosphere. Make reusable across different views."
+        },
+        {
+          "path": "frontend/src/pages/SenderForm.tsx",
+          "operation": "modify",
+          "description": "Apply festive theme styling to sender form page using warm colors, playful typography, and celebratory visual elements. Ensure consistent design language with recipient view."
+        },
+        {
+          "path": "frontend/src/pages/RecipientView.tsx",
+          "operation": "modify",
+          "description": "Apply festive theme styling to recipient view page. Integrate ConfettiAnimation component as background or overlay element to enhance party atmosphere throughout the experience."
         }
       ]
     }

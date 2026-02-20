@@ -1,41 +1,174 @@
 {
   "kind": "build_request",
-  "title": "Match candle colors to cake decoration theme",
+  "title": "Build birthday wish sharing app with candle-blowing interaction",
+  "projectName": "Birthday Wish",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-9",
-      "text": "Update the candle rendering in the BirthdayCake component to dynamically style candle colors and appearance to harmonize with the overall cake decoration theme, ensuring visual cohesion between the candles and the cake design",
+      "id": "REQ-1",
+      "text": "Create a sender form page where users can input the recipient's name and a custom birthday message",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-final"
+          "msg-2"
         ],
         "quotes": [
-          "Match the styles or colour of the candle accordingly to the overall decoration of the cake"
+          "The user inputs his name and the message to be sent to his friend"
         ]
       },
       "acceptanceCriteria": [
-        "Candle colors complement the cake's color scheme",
-        "Candle styling (shape, size, decorative elements) matches the cake's decorative theme",
-        "Visual consistency is maintained between lit and extinguished candle states",
-        "The flame colors harmonize with the candle and cake color palette"
+        "Form includes an input field for recipient name",
+        "Form includes a textarea for custom birthday message",
+        "Form has a submit button to generate the shareable link"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Generate a unique shareable link for each birthday greeting that encodes the recipient name and custom message",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "this overall setup gets generated in the form of a link"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each submission creates a unique link identifier",
+        "Link encodes or stores the recipient name and message",
+        "Generated link is displayed to the sender for copying and sharing"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Store birthday greeting data (recipient name and message) in the backend associated with the unique link identifier",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The user sends this link to his friends. His friends open the link"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores greeting data with a unique identifier",
+        "Backend provides an endpoint to retrieve greeting data by identifier",
+        "Data persists across canister upgrades"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create a recipient view page that displays a birthday cake with lit candles centered on the cake when the shareable link is opened",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "a birthday cake with burning candle appears",
+          "Place the candles in the mid of the cake"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Recipient view loads when visiting the unique link",
+        "Birthday cake is displayed prominently",
+        "Candles are visually positioned in the center/middle of the cake",
+        "Candles have a burning/animated flame effect"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Display the prompt 'Blow the candles!' on the recipient view before interaction",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "with the first message \"Blow the candles!\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "Text 'Blow the candles!' is clearly visible on initial page load",
+        "Prompt is positioned near or above the cake"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement candle-blowing interaction using microphone input to detect blowing sound",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "as he do so"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Browser requests microphone permission",
+        "Audio input is analyzed to detect blowing sound pattern",
+        "Candles extinguish when blowing is detected",
+        "Interaction triggers the birthday message reveal"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Display happy birthday message with the recipient's name and sender's custom message after candles are blown out",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "happy birthday along with the message that was given or generated earlier by his friend is wished to him"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Birthday message includes 'Happy Birthday' greeting",
+        "Recipient's name is displayed in the message",
+        "Sender's custom message is shown",
+        "Message appears after successful candle-blowing interaction"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Design a festive and celebratory visual theme with warm, cheerful colors (avoid blue and purple), playful typography, and birthday party aesthetics including balloons, confetti, or celebratory elements",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette evokes celebration and joy",
+        "Typography is friendly and appropriate for birthday context",
+        "Visual elements enhance the party atmosphere",
+        "Design is consistent across sender and recipient views"
       ]
     }
   ],
   "constraints": [
-    "Do not modify the existing cake image asset",
-    "Preserve the candle blowing interaction functionality",
-    "Maintain the lit/extinguished state toggle behavior"
+    "Candles must be visually positioned in the center/middle of the cake",
+    "Microphone permission must be requested from the user",
+    "Each greeting link must be unique and not reusable for different greetings"
   ],
   "nonGoals": [
-    "Changing the number of candles",
-    "Modifying the cake design itself",
-    "Altering the blow detection logic",
-    "Changing the overall page layout or structure"
+    "User authentication or login system",
+    "Editing or deleting created birthday greetings",
+    "Email or SMS notifications",
+    "Multiple candles with individual blow detection",
+    "Video recording or photo capture features"
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Birthday cake illustration with space for centered candles, festive frosting and decorations, top-down or slight angle view (birthday-cake.dim_800x600.png)",
+      "Lit candle with animated flame, single candle suitable for placement on cake (candle-lit.dim_64x128.png)",
+      "Extinguished candle with smoke trail effect (candle-out.dim_64x128.png)",
+      "Confetti or celebration particle elements for background animation (confetti.dim_512x512.png)"
+    ],
     "edits": []
   }
 }

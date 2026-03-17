@@ -1,7 +1,13 @@
-import { createRouter, RouterProvider, createRoute, createRootRoute, Outlet } from '@tanstack/react-router';
-import SenderForm from './pages/SenderForm';
-import RecipientView from './pages/RecipientView';
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster } from "@/components/ui/sonner";
+import {
+  Outlet,
+  RouterProvider,
+  createRootRoute,
+  createRoute,
+  createRouter,
+} from "@tanstack/react-router";
+import RecipientView from "./pages/RecipientView";
+import SenderForm from "./pages/SenderForm";
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -16,13 +22,13 @@ const rootRoute = createRootRoute({
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: "/",
   component: SenderForm,
 });
 
 const greetingRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/greeting/$linkId',
+  path: "/greeting/$linkId",
   component: RecipientView,
 });
 
@@ -30,7 +36,7 @@ const routeTree = rootRoute.addChildren([indexRoute, greetingRoute]);
 
 const router = createRouter({ routeTree });
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
   }

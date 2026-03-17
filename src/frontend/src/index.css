@@ -1,255 +1,302 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Figtree:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --radius: 1rem;
-        
-        /* Festive warm color palette */
-        --background: 0.98 0.02 45;
-        --foreground: 0.25 0.08 25;
-        
-        --card: 1 0.03 50;
-        --card-foreground: 0.25 0.08 25;
-        
-        --popover: 1 0.03 50;
-        --popover-foreground: 0.25 0.08 25;
-        
-        --primary: 0.65 0.22 35;
-        --primary-foreground: 1 0.02 45;
-        
-        --secondary: 0.75 0.18 65;
-        --secondary-foreground: 0.25 0.08 25;
-        
-        --muted: 0.92 0.03 45;
-        --muted-foreground: 0.55 0.05 35;
-        
-        --accent: 0.70 0.25 15;
-        --accent-foreground: 1 0.02 45;
-        
-        --destructive: 0.577 0.245 27.325;
-        --destructive-foreground: 0.985 0 0;
-        
-        --border: 0.88 0.05 45;
-        --input: 0.88 0.05 45;
-        --ring: 0.65 0.22 35;
-        
-        /* Party-specific colors */
-        --party-primary: 0.60 0.24 30;
-        --party-secondary: 0.72 0.20 55;
-        --party-accent: 0.68 0.26 10;
-        --party-muted: 0.60 0.08 35;
-        --party-border: 0.85 0.08 40;
-        --party-card: 0.99 0.03 48;
-        
-        /* Gradient backgrounds */
-        --party-bg-start: 0.97 0.05 50;
-        --party-bg-mid: 0.95 0.08 40;
-        --party-bg-end: 0.93 0.10 30;
-        
-        /* Flame colors */
-        --party-flame-base: 0.65 0.25 35;
-        --party-flame-mid: 0.75 0.22 50;
-        --party-flame-tip: 0.85 0.15 70;
-    }
+  :root {
+    --radius: 1.25rem;
 
-    .dark {
-        --background: 0.20 0.05 30;
-        --foreground: 0.98 0.02 45;
-        
-        --card: 0.25 0.06 30;
-        --card-foreground: 0.98 0.02 45;
-        
-        --popover: 0.25 0.06 30;
-        --popover-foreground: 0.98 0.02 45;
-        
-        --primary: 0.75 0.20 45;
-        --primary-foreground: 0.20 0.05 30;
-        
-        --secondary: 0.65 0.18 55;
-        --secondary-foreground: 0.98 0.02 45;
-        
-        --muted: 0.35 0.05 35;
-        --muted-foreground: 0.70 0.08 40;
-        
-        --accent: 0.70 0.22 20;
-        --accent-foreground: 0.98 0.02 45;
-        
-        --destructive: 0.704 0.191 22.216;
-        --destructive-foreground: 0.98 0.02 45;
-        
-        --border: 0.35 0.06 35;
-        --input: 0.35 0.06 35;
-        --ring: 0.70 0.18 45;
-        
-        --party-primary: 0.78 0.22 40;
-        --party-secondary: 0.70 0.20 60;
-        --party-accent: 0.72 0.24 15;
-        --party-muted: 0.55 0.08 40;
-        --party-border: 0.40 0.08 35;
-        --party-card: 0.28 0.06 32;
-        
-        --party-bg-start: 0.22 0.06 32;
-        --party-bg-mid: 0.25 0.08 35;
-        --party-bg-end: 0.28 0.10 38;
-        
-        --party-flame-base: 0.70 0.25 35;
-        --party-flame-mid: 0.80 0.22 50;
-        --party-flame-tip: 0.90 0.15 70;
-    }
+    /* === Coquette Cream & Cherry palette === */
+    --background: 0.97 0.02 80;
+    --foreground: 0.28 0.06 25;
 
-    * {
-        @apply border-border;
-    }
-    
-    body {
-        @apply bg-background text-foreground;
-        font-family: 'Poppins', sans-serif;
-    }
-    
-    .font-display {
-        font-family: 'Fredoka', cursive;
-    }
+    --card: 0.99 0.015 80;
+    --card-foreground: 0.28 0.06 25;
+
+    --popover: 0.99 0.015 80;
+    --popover-foreground: 0.28 0.06 25;
+
+    /* Cherry red */
+    --primary: 0.52 0.22 25;
+    --primary-foreground: 0.99 0.01 80;
+
+    /* Dusty rose */
+    --secondary: 0.75 0.12 15;
+    --secondary-foreground: 0.25 0.06 25;
+
+    --muted: 0.93 0.03 60;
+    --muted-foreground: 0.58 0.07 30;
+
+    /* Coral accent */
+    --accent: 0.72 0.16 30;
+    --accent-foreground: 0.99 0.01 80;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.05 20;
+    --input: 0.9 0.04 30;
+    --ring: 0.52 0.22 25;
+
+    /* Party palette aliases */
+    --party-primary: 0.52 0.22 25;
+    --party-secondary: 0.75 0.12 15;
+    --party-accent: 0.72 0.16 30;
+    --party-gold: 0.82 0.12 75;
+    --party-muted: 0.6 0.07 30;
+    --party-border: 0.84 0.07 20;
+    --party-card: 0.99 0.015 80;
+
+    --party-bg-start: 0.97 0.02 80;
+    --party-bg-mid: 0.95 0.04 30;
+    --party-bg-end: 0.93 0.06 20;
+
+    --party-flame-base: 0.65 0.25 35;
+    --party-flame-mid: 0.75 0.22 50;
+    --party-flame-tip: 0.85 0.15 70;
+
+    /* sidebar (required by shadcn) */
+    --sidebar: 0.99 0.015 80;
+    --sidebar-foreground: 0.28 0.06 25;
+    --sidebar-primary: 0.52 0.22 25;
+    --sidebar-primary-foreground: 0.99 0.01 80;
+    --sidebar-accent: 0.72 0.16 30;
+    --sidebar-accent-foreground: 0.99 0.01 80;
+    --sidebar-border: 0.88 0.05 20;
+    --sidebar-ring: 0.52 0.22 25;
+
+    /* chart */
+    --chart-1: 0.52 0.22 25;
+    --chart-2: 0.75 0.12 15;
+    --chart-3: 0.72 0.16 30;
+    --chart-4: 0.82 0.12 75;
+    --chart-5: 0.68 0.18 10;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Figtree", sans-serif;
+  }
+
+  .font-display {
+    font-family: "Playfair Display", serif;
+  }
 }
 
 @layer utilities {
-    .text-party-primary {
-        color: oklch(var(--party-primary));
+  /* ── Party colour helpers ── */
+  .text-party-primary {
+    color: oklch(var(--party-primary));
+  }
+  .text-party-secondary {
+    color: oklch(var(--party-secondary));
+  }
+  .text-party-accent {
+    color: oklch(var(--party-accent));
+  }
+  .text-party-gold {
+    color: oklch(var(--party-gold));
+  }
+  .text-party-muted {
+    color: oklch(var(--party-muted));
+  }
+
+  .bg-party-primary {
+    background-color: oklch(var(--party-primary));
+  }
+  .bg-party-secondary {
+    background-color: oklch(var(--party-secondary));
+  }
+  .bg-party-accent {
+    background-color: oklch(var(--party-accent));
+  }
+  .bg-party-card {
+    background-color: oklch(var(--party-card));
+  }
+  .bg-party-bg-start {
+    background-color: oklch(var(--party-bg-start));
+  }
+  .bg-party-bg-mid {
+    background-color: oklch(var(--party-bg-mid));
+  }
+  .bg-party-bg-end {
+    background-color: oklch(var(--party-bg-end));
+  }
+
+  .border-party-border {
+    border-color: oklch(var(--party-border));
+  }
+  .border-party-primary {
+    border-color: oklch(var(--party-primary));
+  }
+  .border-party-secondary {
+    border-color: oklch(var(--party-secondary));
+  }
+
+  /* ── Postage-stamp card border ── */
+  .stamp-border {
+    position: relative;
+    border: none !important;
+    border-radius: 1rem;
+    box-shadow: 0 0 0 2px oklch(var(--party-primary)), 0 0 0 8px
+      oklch(var(--party-card)), 0 0 0 10px oklch(var(--party-primary) / 0.35);
+  }
+
+  .stamp-border-pink {
+    position: relative;
+    border-radius: 1rem;
+    box-shadow: 0 0 0 2px oklch(var(--party-secondary)), 0 0 0 8px
+      oklch(var(--party-card)), 0 0 0 10px oklch(var(--party-secondary) / 0.35);
+  }
+
+  /* ── Polka-dot page background ── */
+  .polka-bg {
+    background-color: oklch(var(--background));
+    background-image: radial-gradient(
+      oklch(var(--party-secondary) / 0.18) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 28px 28px;
+  }
+
+  /* ── Decorative ribbon at top of card ── */
+  .ribbon-top::before {
+    content: "🎀";
+    position: absolute;
+    top: -1.1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 10;
+    filter: drop-shadow(0 2px 4px oklch(var(--party-secondary) / 0.4));
+  }
+
+  /* ── Flame animations ── */
+  @keyframes flame {
+    0%,
+    100% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
     }
-    
-    .text-party-secondary {
-        color: oklch(var(--party-secondary));
+    50% {
+      transform: scale(1.1) translateY(-2px);
+      opacity: 0.9;
     }
-    
-    .text-party-accent {
-        color: oklch(var(--party-accent));
+  }
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
     }
-    
-    .text-party-muted {
-        color: oklch(var(--party-muted));
+    100% {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
     }
-    
-    .bg-party-primary {
-        background-color: oklch(var(--party-primary));
+  }
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(0);
     }
-    
-    .bg-party-secondary {
-        background-color: oklch(var(--party-secondary));
+    50% {
+      transform: translateY(-18px);
     }
-    
-    .bg-party-accent {
-        background-color: oklch(var(--party-accent));
+  }
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      opacity: 1;
     }
-    
-    .bg-party-card {
-        background-color: oklch(var(--party-card));
+    50% {
+      opacity: 0.75;
     }
-    
-    .bg-party-bg-start {
-        background-color: oklch(var(--party-bg-start));
+  }
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
     }
-    
-    .bg-party-bg-mid {
-        background-color: oklch(var(--party-bg-mid));
+    to {
+      transform: rotate(360deg);
     }
-    
-    .bg-party-bg-end {
-        background-color: oklch(var(--party-bg-end));
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-4deg);
     }
-    
-    .border-party-border {
-        border-color: oklch(var(--party-border));
+    50% {
+      transform: translateY(-12px) rotate(4deg);
     }
-    
-    .border-party-primary {
-        border-color: oklch(var(--party-primary));
+  }
+  @keyframes float2 {
+    0%,
+    100% {
+      transform: translateY(0) rotate(6deg);
     }
-    
-    .bg-party-flame-base {
-        background-color: oklch(var(--party-flame-base));
+    50% {
+      transform: translateY(-16px) rotate(-6deg);
     }
-    
-    .bg-party-flame-mid {
-        background-color: oklch(var(--party-flame-mid));
+  }
+  @keyframes shimmer {
+    0% {
+      box-shadow: 0 0 12px 4px oklch(var(--party-primary) / 0.4);
     }
-    
-    .bg-party-flame-tip {
-        background-color: oklch(var(--party-flame-tip));
+    50% {
+      box-shadow: 0 0 28px 10px oklch(var(--party-primary) / 0.7);
     }
-    
-    @keyframes flame {
-        0%, 100% {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
-        50% {
-            transform: scale(1.1) translateY(-2px);
-            opacity: 0.9;
-        }
+    100% {
+      box-shadow: 0 0 12px 4px oklch(var(--party-primary) / 0.4);
     }
-    
-    @keyframes confetti-fall {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(100vh) rotate(720deg);
-            opacity: 0;
-        }
+  }
+  @keyframes mic-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
     }
-    
-    @keyframes bounce-slow {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-20px);
-        }
+    50% {
+      transform: scale(1.4);
+      opacity: 0.3;
     }
-    
-    @keyframes pulse-slow {
-        0%, 100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.8;
-        }
+    100% {
+      transform: scale(1);
+      opacity: 0.8;
     }
-    
-    @keyframes spin-slow {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-    
-    .animate-flame {
-        animation: flame 0.3s ease-in-out infinite;
-    }
-    
-    .animate-confetti-fall {
-        animation: confetti-fall linear infinite;
-    }
-    
-    .animate-bounce-slow {
-        animation: bounce-slow 2s ease-in-out infinite;
-    }
-    
-    .animate-pulse-slow {
-        animation: pulse-slow 3s ease-in-out infinite;
-    }
-    
-    .animate-spin-slow {
-        animation: spin-slow 3s linear infinite;
-    }
-    
-    .flame-flicker {
-        animation: flame 0.15s ease-in-out infinite;
-    }
+  }
+
+  .animate-flame {
+    animation: flame 0.3s ease-in-out infinite;
+  }
+  .flame-flicker {
+    animation: flame 0.15s ease-in-out infinite;
+  }
+  .animate-confetti-fall {
+    animation: confetti-fall linear infinite;
+  }
+  .animate-bounce-slow {
+    animation: bounce-slow 2.2s ease-in-out infinite;
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+  .animate-spin-slow {
+    animation: spin-slow 4s linear infinite;
+  }
+  .animate-float {
+    animation: float 3.5s ease-in-out infinite;
+  }
+  .animate-float2 {
+    animation: float2 4s ease-in-out infinite;
+  }
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+  .animate-mic-ring {
+    animation: mic-ring 1.6s ease-in-out infinite;
+  }
 }

@@ -1,13 +1,56 @@
-import { useEffect, useState } from 'react';
-import { Sparkles, Heart, PartyPopper } from 'lucide-react';
-import ConfettiAnimation from './ConfettiAnimation';
+import { useEffect, useState } from "react";
+import ConfettiAnimation from "./ConfettiAnimation";
 
 interface BirthdayMessageProps {
   recipientName: string;
   message: string;
 }
 
-export default function BirthdayMessage({ recipientName, message }: BirthdayMessageProps) {
+const FLOAT_EMOJIS = [
+  { emoji: "🎀", top: "4%", left: "3%", size: "2.4rem", anim: "animate-float" },
+  {
+    emoji: "🍒",
+    top: "8%",
+    right: "4%",
+    size: "2.2rem",
+    anim: "animate-float2",
+  },
+  { emoji: "✨", top: "55%", left: "2%", size: "2rem", anim: "animate-float" },
+  {
+    emoji: "🧁",
+    top: "70%",
+    right: "3%",
+    size: "2.2rem",
+    anim: "animate-float2",
+  },
+  { emoji: "💌", top: "85%", left: "5%", size: "2rem", anim: "animate-float" },
+  {
+    emoji: "🩷",
+    top: "80%",
+    right: "5%",
+    size: "2rem",
+    anim: "animate-float2",
+  },
+  {
+    emoji: "🌸",
+    top: "40%",
+    left: "1%",
+    size: "1.9rem",
+    anim: "animate-float2",
+  },
+  {
+    emoji: "⭐",
+    top: "35%",
+    right: "2%",
+    size: "1.9rem",
+    anim: "animate-float",
+  },
+];
+
+export default function BirthdayMessage({
+  recipientName,
+  message,
+}: BirthdayMessageProps) {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
@@ -15,58 +58,114 @@ export default function BirthdayMessage({ recipientName, message }: BirthdayMess
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-party-bg-start via-party-bg-mid to-party-bg-end relative overflow-hidden">
+    <div className="min-h-screen polka-bg flex items-center justify-center p-4 relative overflow-hidden">
       <ConfettiAnimation />
-      
-      <div className={`relative z-10 max-w-4xl w-full text-center transition-all duration-1000 ${
-        showContent ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-      }`}>
-        <div className="mb-8 animate-bounce-slow">
-          <PartyPopper className="w-20 h-20 md:w-32 md:h-32 mx-auto text-party-primary drop-shadow-lg" />
+
+      {/* floating emojis */}
+      {FLOAT_EMOJIS.map((d) => (
+        <span
+          key={d.emoji + d.top}
+          className={`pointer-events-none select-none absolute ${d.anim}`}
+          style={{
+            top: d.top,
+            left: d.left,
+            right: (d as any).right,
+            fontSize: d.size,
+            opacity: 0.75,
+          }}
+          aria-hidden="true"
+        >
+          {d.emoji}
+        </span>
+      ))}
+
+      <div
+        className={`relative z-10 max-w-lg w-full text-center transition-all duration-1000 ${
+          showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
+        {/* giant heading */}
+        <div className="mb-2">
+          <span className="text-5xl animate-bounce-slow inline-block">🎂</span>
         </div>
 
-        <h1 className="text-6xl md:text-8xl font-bold font-display text-party-primary mb-6 drop-shadow-2xl animate-pulse-slow">
+        <h1
+          className="font-display italic leading-tight drop-shadow-lg animate-pulse-slow"
+          style={{
+            fontSize: "clamp(3rem, 10vw, 5.5rem)",
+            color: "oklch(0.52 0.22 25)",
+          }}
+        >
           Happy Birthday
         </h1>
 
-        <h2 className="text-5xl md:text-7xl font-bold font-display text-party-accent mb-12 drop-shadow-xl">
-          {recipientName}!
+        <h2
+          className="font-display font-bold mt-1 mb-8"
+          style={{
+            fontSize: "clamp(2.2rem, 7vw, 4rem)",
+            color: "oklch(0.72 0.16 30)",
+          }}
+        >
+          {recipientName}! 🎀
         </h2>
 
-        <div className="bg-party-card/90 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-party-border max-w-2xl mx-auto">
-          <div className="flex justify-center gap-4 mb-6">
-            <Sparkles className="w-8 h-8 text-party-accent animate-spin-slow" />
-            <Heart className="w-8 h-8 text-party-secondary animate-pulse" />
-            <Sparkles className="w-8 h-8 text-party-accent animate-spin-slow" />
+        {/* postcard / letter card */}
+        <div
+          className="relative bg-card rounded-3xl p-8 md:p-10 shadow-2xl text-left"
+          style={{
+            boxShadow:
+              "0 0 0 2px oklch(0.75 0.12 15), 0 0 0 9px oklch(0.99 0.015 80), 0 0 0 11px oklch(0.75 0.12 15 / 0.35), 0 12px 50px oklch(0.52 0.22 25 / 0.1)",
+          }}
+        >
+          {/* stamp corner decoration */}
+          <div
+            className="absolute top-3 right-4 w-14 h-14 rounded-lg flex items-center justify-center text-2xl shadow-sm"
+            style={{
+              background: "oklch(0.97 0.02 80)",
+              border: "2px dashed oklch(0.52 0.22 25 / 0.4)",
+            }}
+            aria-hidden="true"
+          >
+            🍒
           </div>
 
-          <p className="text-2xl md:text-3xl text-party-primary font-medium leading-relaxed whitespace-pre-wrap">
+          <div className="mb-4">
+            <span
+              className="text-xs tracking-widest uppercase font-semibold"
+              style={{ color: "oklch(0.75 0.12 15)" }}
+            >
+              ✦ A message from your friend ✦
+            </span>
+          </div>
+
+          <p
+            className="leading-relaxed whitespace-pre-wrap font-display italic"
+            style={{ fontSize: "1.2rem", color: "oklch(0.35 0.08 25)" }}
+          >
             {message}
           </p>
 
-          <div className="flex justify-center gap-4 mt-6">
-            <Sparkles className="w-8 h-8 text-party-accent animate-spin-slow" />
-            <Heart className="w-8 h-8 text-party-secondary animate-pulse" />
-            <Sparkles className="w-8 h-8 text-party-accent animate-spin-slow" />
+          <div className="mt-6 flex items-center gap-2">
+            <span className="text-xl">🎀</span>
+            <span className="text-xs tracking-widest uppercase text-party-muted">
+              with all the love in the world
+            </span>
+            <span className="text-xl">🎀</span>
           </div>
         </div>
 
-        <div className="mt-12 text-party-muted">
-          <p className="text-lg">🎂 🎈 🎉 🎁 🎊 🎂 🎈 🎉 🎁 🎊</p>
-        </div>
+        <p className="mt-8 text-2xl tracking-widest">🍒 🎀 ✨ 🧁 💌 🩷 ⭐ 🌸</p>
 
-        <footer className="mt-12 text-party-muted">
-          <p className="text-sm">
-            © {new Date().getFullYear()} · Built with ❤️ using{' '}
-            <a
-              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-party-primary transition-colors"
-            >
-              caffeine.ai
-            </a>
-          </p>
+        <footer className="mt-8 text-party-muted text-sm">
+          © {new Date().getFullYear()} · Built with 🩷 using{" "}
+          <a
+            href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-party-primary transition-colors"
+          >
+            caffeine.ai
+          </a>
         </footer>
       </div>
     </div>

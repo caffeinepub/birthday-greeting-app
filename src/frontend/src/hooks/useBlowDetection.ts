@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useBlowDetection() {
   const [isBlown, setIsBlown] = useState(false);
@@ -28,7 +28,7 @@ export function useBlowDetection() {
       setIsListening(true);
 
       const dataArray = new Uint8Array(analyser.frequencyBinCount);
-      
+
       const detectBlow = () => {
         if (!analyserRef.current || isBlown) return;
 
@@ -38,11 +38,11 @@ export function useBlowDetection() {
         let sum = 0;
         const startFreq = 10;
         const endFreq = 100;
-        
+
         for (let i = startFreq; i < endFreq; i++) {
           sum += dataArray[i];
         }
-        
+
         const average = sum / (endFreq - startFreq);
 
         // Detect blow: sustained amplitude above threshold
@@ -57,7 +57,7 @@ export function useBlowDetection() {
 
       detectBlow();
     } catch (error) {
-      console.error('Error accessing microphone:', error);
+      console.error("Error accessing microphone:", error);
       setPermissionGranted(false);
     }
   }, [isBlown]);
@@ -66,11 +66,13 @@ export function useBlowDetection() {
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
-    
+
     if (streamRef.current) {
-      streamRef.current.getTracks().forEach(track => track.stop());
+      for (const track of streamRef.current.getTracks()) {
+        track.stop();
+      }
     }
-    
+
     if (audioContextRef.current) {
       audioContextRef.current.close();
     }
